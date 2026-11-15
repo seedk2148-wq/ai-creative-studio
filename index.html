@@ -18,77 +18,33 @@ Copy Prompt
 </footer>
 
 <script>
-function generate(){
-
-const type=document.getElementById("type").value;
-const product=document.getElementById("product").value.trim();
-const style=document.getElementById("style").value;
-const duration=document.getElementById("duration").value;
-const platform=document.getElementById("platform").value;
-const idea=document.getElementById("idea").value.trim();
-
-if(!product){
-alert("Please enter your project or product name.");
-return;
-}
-
-let result="";
-
-if(type==="video"){
-result=`Create a professional ${duration} cinematic AI video about ${product}.
-
-VISUAL STYLE:
-${style}, Hollywood cinematic quality.
-
-CONCEPT:
-${idea || "Create an emotional and visually powerful story about "+product+"."}
-
-PRODUCTION:
-- Professional cinematic camera movements.
-- Dramatic lighting and realistic environments.
-- Beautiful visual transitions.
-- Detailed textures and realistic visuals.
-- Professional cinematic color grading.
-- Powerful storytelling.
-- 4K Ultra HD target quality.
-- Vertical 9:16 format for ${platform}.
-
-Create a visually stunning and emotionally engaging final video.`;
-}
-else{
-result=`Create a premium commercial advertisement for ${product}.
-
-STYLE:
-${style} luxury advertising.
-
-CONCEPT:
-${idea || "Showcase the product in a premium and attractive way."}
-
+function generate() { const type = document.getElementById("type").value; const product = document.getElementById("product").value.trim(); const style = document.getElementById("style").value; const duration = document.getElementById("duration").value; const platform = document.getElementById("platform").value; const idea = document.getElementById("idea").value.trim();
+if (!product) { alert("Please enter your project or product name."); return; }
+const result = ` AI CREATIVE STUDIO - PROFESSIONAL PRODUCTION
+PROJECT: ${product}
+CONTENT TYPE: ${type} VISUAL STYLE: ${style} DURATION: ${duration} PLATFORM: ${platform}
+CREATIVE CONCEPT: ${idea || "Create an original cinematic concept for " + product}
+VISUAL DIRECTION:
+Hollywood cinematic visuals.
+Ultra realistic details.
+Professional lighting.
+Dramatic camera movements.
+Premium color grading.
+Beautiful transitions.
+Emotional storytelling.
+PRODUCTION QUALITY:
+4K Ultra HD target.
+Professional commercial quality.
+Cinematic composition.
+High-end advertising style.
 SCENES:
-1. Powerful cinematic opening.
-2. Beautiful product reveal.
-3. Showcase the main features.
-4. Premium close-up shots.
-5. Strong final advertising message.
-
-PRODUCTION:
-- Professional commercial lighting.
-- Cinematic camera movements.
-- Realistic product details.
-- Premium transitions.
-- 4K Ultra HD target quality.
-- Format optimized for ${platform}.
-- Duration: ${duration}.
-
-Create an unforgettable professional advertisement.`;
-}
-
-const output=document.getElementById("output");
-output.textContent=result;
-output.style.display="block";
-document.getElementById("copy").style.display="inline-block";
-}
-
+Powerful cinematic opening.
+Beautiful product reveal.
+Showcase the main features.
+Premium cinematic close-ups.
+Strong final advertising message.
+Create an unforgettable professional production. `;
+const output = document.getElementById("output"); output.textContent = result; output.style.display = "block"; document.getElementById("copy").style.display = "inline-block"; }
 function copyResult(){
 const text=document.getElementById("output").textContent;
 navigator.clipboard.writeText(text)
