@@ -1,55 +1,75 @@
-<label>Describe Your Idea</label>
-<textarea id="idea" placeholder="Describe your creative idea..."></textarea>
+VISUAL STYLE:
+${style}
 
-<button class="btn" onclick="generate()">Generate Creative Prompt ✨</button>
+DURATION:
+${duration}
 
-<div class="output" id="output"></div>
+PLATFORM:
+${platform}
 
-<button class="btn" id="copy" onclick="copyResult()" style="display:none">
-Copy Prompt
-</button>
+CREATIVE CONCEPT:
+${idea || "Create an original, powerful and emotionally engaging concept about "+product+"."}
 
-</div>
-</section>
-
-<footer>
-<p>© 2026 AI Creative Studio</p>
-<p>Creating the Future of Digital Content.</p>
-</footer>
-
-<script>
-function generate() { const type = document.getElementById("type").value; const product = document.getElementById("product").value.trim(); const style = document.getElementById("style").value; const duration = document.getElementById("duration").value; const platform = document.getElementById("platform").value; const idea = document.getElementById("idea").value.trim();
-if (!product) { alert("Please enter your project or product name."); return; }
-const result = ` AI CREATIVE STUDIO - PROFESSIONAL PRODUCTION
-PROJECT: ${product}
-CONTENT TYPE: ${type} VISUAL STYLE: ${style} DURATION: ${duration} PLATFORM: ${platform}
-CREATIVE CONCEPT: ${idea || "Create an original cinematic concept for " + product}
 VISUAL DIRECTION:
-Hollywood cinematic visuals.
-Ultra realistic details.
-Professional lighting.
-Dramatic camera movements.
-Premium color grading.
-Beautiful transitions.
-Emotional storytelling.
+- Hollywood cinematic realism.
+- Ultra realistic details.
+- Professional lighting.
+- Dramatic camera movements.
+- Premium color grading.
+- Beautiful cinematic transitions.
+- Emotional storytelling.
+- Professional composition.
+
 PRODUCTION QUALITY:
-4K Ultra HD target.
-Professional commercial quality.
-Cinematic composition.
-High-end advertising style.
-SCENES:
-Powerful cinematic opening.
-Beautiful product reveal.
-Showcase the main features.
-Premium cinematic close-ups.
-Strong final advertising message.
-Create an unforgettable professional production. `;
-const output = document.getElementById("output"); output.textContent = result; output.style.display = "block"; document.getElementById("copy").style.display = "inline-block"; }
-function copyResult(){
+- 4K Ultra HD target quality.
+- High detail and sharp focus.
+- Realistic textures.
+- Professional visual effects.
+- Cinematic atmosphere.
+- High-end production quality.
+
+SCENE DIRECTION:
+1. Powerful cinematic opening.
+2. Beautiful visual reveal.
+3. Showcase the main subject.
+4. Premium cinematic close-ups.
+5. Emotional and memorable final scene.
+
+CAMERA:
+- Smooth tracking shots.
+- Slow motion where appropriate.
+- Dynamic camera angles.
+- Professional depth of field.
+
+FINAL RESULT:
+Create a visually stunning, professional production optimized for ${platform}.
+
+IMPORTANT:
+Maintain visual consistency throughout all scenes.
+Avoid distorted objects, unrealistic movements and unwanted text.
+
+Create an unforgettable cinematic experience.`;
+
+document.getElementById("output").textContent=result;
+document.getElementById("output").style.display="block";
+document.getElementById("copy").style.display="inline-block";
+document.getElementById("clear").style.display="inline-block";
+}
+
+function copyPrompt(){
 const text=document.getElementById("output").textContent;
 navigator.clipboard.writeText(text)
 .then(()=>alert("Prompt copied successfully!"))
 .catch(()=>alert("Please select and copy the prompt manually."));
+}
+
+function clearAll(){
+document.getElementById("product").value="";
+document.getElementById("idea").value="";
+document.getElementById("output").textContent="";
+document.getElementById("output").style.display="none";
+document.getElementById("copy").style.display="none";
+document.getElementById("clear").style.display="none";
 }
 </script>
 
