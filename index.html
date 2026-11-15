@@ -1,49 +1,3 @@
-const duration=document.getElementById("duration").value;
-const platform=document.getElementById("platform").value;
-const quality=document.getElementById("quality").value;
-const product=document.getElementById("product").value.trim();
-const idea=document.getElementById("idea").value.trim();
-
-if(!product){
-alert("Please enter your project or product name.");
-return;
-}
-
-const prompt=`
-AI CREATIVE STUDIO - PROFESSIONAL PRODUCTION
-
-PROJECT: ${product}
-
-CONTENT TYPE: ${type}
-VISUAL STYLE: ${style}
-DURATION: ${duration}
-PLATFORM: ${platform}
-QUALITY: ${quality}
-
-CREATIVE CONCEPT:
-${idea || "Create an original, powerful and emotionally engaging concept about "+product+"."}
-
-VISUAL DIRECTION:
-- Hollywood cinematic realism.
-- Ultra realistic details.
-- Professional lighting.
-- Dramatic camera movements.
-- Premium color grading.
-- Beautiful cinematic transitions.
-- Emotional storytelling.
-- Professional composition.
-
-PRODUCTION QUALITY:
-- ${quality} target quality.
-- High detail and sharp focus.
-- Realistic textures.
-- Professional visual effects.
-- Cinematic atmosphere.
-- High-end production quality.
-
-SCENE DIRECTION:
-1. Powerful cinematic opening.
-2. Beautiful visual reveal.
 3. Showcase the main subject.
 4. Premium cinematic close-ups.
 5. Strong emotional final scene.
@@ -54,28 +8,40 @@ CAMERA:
 - Professional depth of field.
 - Realistic motion and lighting.
 
-FINAL RESULT:
-Create an unforgettable professional production.
-Optimized for ${platform}.
-Maintain consistent visual quality throughout.
+PRODUCTION QUALITY:
+- ${quality} target quality.
+- High detail and sharp focus.
+- Realistic textures.
+- Professional visual effects.
+- Cinematic atmosphere.
+
+DELIVERABLES:
+1. Complete creative concept.
+2. Detailed scene-by-scene prompts.
+3. Professional camera directions.
+4. Lighting and visual effects.
+5. English voice-over script.
+6. Music and sound design suggestions.
+7. Final advertising message.
+8. Negative prompt to avoid visual errors.
 
 IMPORTANT:
-Avoid distorted objects, unrealistic movements,
-blurry details and inconsistent subjects.
+Maintain consistent subjects, realistic details,
+professional production quality and visual continuity.
+
+Create an unforgettable professional production.
 `;
 
-document.getElementById("result").textContent=prompt;
+document.getElementById("output").textContent=prompt;
 document.getElementById("output").style.display="block";
-document.getElementById("output").scrollIntoView({behavior:"smooth"});
+document.getElementById("copy").style.display="inline-block";
 }
 
 function copyResult(){
-const text=document.getElementById("result").textContent;
+const text=document.getElementById("output").textContent;
 navigator.clipboard.writeText(text)
-.then(()=>alert("Prompt copied successfully!"))
-.catch(()=>{
-alert("Please select and copy the prompt manually.");
-});
+.then(()=>alert("Prompts copied successfully!"))
+.catch(()=>alert("Please select and copy the prompts manually."));
 }
 </script>
 
