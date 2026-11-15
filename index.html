@@ -1,38 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Creative Studio</title>
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: #080d1b;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
+<label>Describe Your Idea</label>
+<textarea id="idea" placeholder="Describe your creative idea..."></textarea>
+
+<button class="btn" onclick="generate()">Generate Creative Prompt ✨</button>
+
+<div class="output" id="output"></div>
+
+<button class="btn" id="copy" onclick="copyResult()" style="display:none">
+Copy Prompt
+</button>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 AI Creative Studio</p>
+<p>Creating the Future of Digital Content.</p>
+</footer>
+
+<script>
+function generate(){
+
+const type=document.getElementById("type").value;
+const product=document.getElementById("product").value.trim();
+const style=document.getElementById("style").value;
+const duration=document.getElementById("duration").value;
+const platform=document.getElementById("platform").value;
+const idea=document.getElementById("idea").value.trim();
+
+if(!product){
+alert("Please enter your project or product name.");
+return;
 }
-header { padding: 110px 20px; }
-h1 { font-size: 48px; color: #8b9cff; }
-p { color: #cbd5e1; font-size: 19px; line-height: 1.7; }
-a {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 15px 30px;
-  background: #635bff;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
+
+let result="";
+
+if(type==="video"){
+result=`Create a professional ${duration} cinematic AI video about ${product}.
+
+VISUAL STYLE:
+${style}, Hollywood cinematic quality.
+
+CONCEPT:
+${idea || "Create an emotional and visually powerful story about "+product+"."}
+
+PRODUCTION:
+- Professional cinematic camera movements.
+- Dramatic lighting and realistic environments.
+- Beautiful visual transitions.
+- Detailed textures and realistic visuals.
+- Professional cinematic color grading.
+- Powerful storytelling.
+- 4K Ultra HD target quality.
+- Vertical 9:16 format for ${platform}.
+
+Create a visually stunning and emotionally engaging final video.`;
 }
-</style>
-</head>
-<body>
-<header>
-<h1>AI Creative Studio</h1>
-<p>Professional AI Videos & Creative Advertising</p>
-<p>We create the future of digital content.</p>
-<a href="mailto:contact@example.com">Contact Us</a>
-</header>
+else{
+result=`Create a premium commercial advertisement for ${product}.
+
+STYLE:
+${style} luxury advertising.
+
+CONCEPT:
+${idea || "Showcase the product in a premium and attractive way."}
+
+SCENES:
+1. Powerful cinematic opening.
+2. Beautiful product reveal.
+3. Showcase the main features.
+4. Premium close-up shots.
+5. Strong final advertising message.
+
+PRODUCTION:
+- Professional commercial lighting.
+- Cinematic camera movements.
+- Realistic product details.
+- Premium transitions.
+- 4K Ultra HD target quality.
+- Format optimized for ${platform}.
+- Duration: ${duration}.
+
+Create an unforgettable professional advertisement.`;
+}
+
+const output=document.getElementById("output");
+output.textContent=result;
+output.style.display="block";
+document.getElementById("copy").style.display="inline-block";
+}
+
+function copyResult(){
+const text=document.getElementById("output").textContent;
+navigator.clipboard.writeText(text)
+.then(()=>alert("Prompt copied successfully!"))
+.catch(()=>alert("Please select and copy the prompt manually."));
+}
+</script>
+
 </body>
 </html>
